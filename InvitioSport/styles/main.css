@@ -20,7 +20,7 @@
 #friendsApp .activities-view .km-listview,
 #friendsApp .add-activity-view .km-listview,
 #friendsApp .add-comment-view .km-listview {
-  margin: 1em;
+  /*margin: 1em;*/
 }
 
 .km-flat .km-rowinsert,
@@ -69,11 +69,11 @@ input[type='week'] {
 #friendsApp.km-flat .km-content {
   border: 0 none;
   color: #4d4d4d;
-  background-color: #fff;
+  background-color: #525970;
 }
 
 #friendsApp.km-flat .km-navbar {
-  background-color: #fff;
+  background-color: #C6C6C6;
 }
 
 #friendsApp.km-flat .km-content {
@@ -193,6 +193,7 @@ input[type='week'] {
 #friendsApp .nav-button {
   border: 0 none;
   background-color: transparent;
+     color:#828282;
 }
 
 #friendsApp .nav-button-icon {
@@ -234,11 +235,11 @@ input[type='week'] {
 
 #friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header {
   min-height: 20px;
-  background-color: #4d4d4d;
+  /* background-color: #4d4d4d; */
 }
 
 #friendsApp.km-flat.km-on-ios.km-black-translucent-status-bar .km-header .km-navbar {
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   padding-top: .5em;
 }
 
@@ -252,6 +253,7 @@ input[type='week'] {
 
 #friendsApp.km-flat .km-header .km-view-title {
   font-size: 1.3em;
+    color:#828282;
 }
 
 /* Welcome screen */
@@ -261,11 +263,11 @@ input[type='week'] {
 }
 
 #friendsApp .app-name {
-  width: 127px;
-  height: 119px;
+  width: 350px;
+  height: 86px;
   margin: 1.5em auto;
   text-indent: -9999px;
-  background: transparent url(images/logo-friends.png) no-repeat 0 0;
+  background: transparent url(images/invitio2.gif) no-repeat 0 0;
   overflow: hidden;
 }
 
@@ -401,6 +403,7 @@ input[type='week'] {
 
 #friendsApp .activity-view .activity-content > span {
   padding: 1em 0;
+  color: white;
 }
 
 #friendsApp .activity-view .user-info {
@@ -435,10 +438,10 @@ input[type='week'] {
 
 #friendsApp .activities-view .km-list > li,
 #friendsApp .activity-view .km-list > li {
-  padding: .75em 0 1em;
+  /*padding: .75em 0 1em;*/
   border-width: 0;
   color: #4d4d4d;
-  background-color: #fff;
+  background-color: #525970;
   box-shadow: none;
   overflow: visible;
 }
@@ -448,13 +451,14 @@ input[type='week'] {
   border-width: 0;
 }
 
+/* this is the thin white line above every "li" element*/
 #friendsApp .activities-view .km-list > li::before,
 #friendsApp .activity-view .km-list > li::before {
   content: '';
-  position: absolute;
+  /*position: absolute;
   top: 0;
   right: 0;
-  left: 4.5em;
+  left: 4.5em;*/
   display: block;
   height: 1px;
   border-bottom: 1px solid #eaeced;
@@ -490,7 +494,7 @@ input[type='week'] {
 #friendsApp .activity-content,
 #friendsApp .comment-content {
   position: relative;
-  padding-left: 5em;
+  /*padding-left: 5em;*/
   font-size: .85rem;
 }
 
@@ -629,6 +633,7 @@ input[type='week'] {
   #friendsApp .nav-button,
   #friendsApp .welcome-scrn .group-wrp .oauth .btn {
     background-size: 40px 40px;
+      
   }
 
   #friendsApp .nav-button-back {

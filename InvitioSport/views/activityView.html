@@ -12,31 +12,56 @@
             <img id="picture" class="picture" data-bind="attr:{src: PictureUrl()}" width="100%">
             <div class="user-info">
                 <div class="user-avatar">
-                    <img data-bind="attr:{src: User().PictureUrl}" alt="#: User().DisplayName #">
+                    <img data-bind="attr:{src: Owner2().PictureUrl}" alt="#: Owner2().DisplayName #">
                 </div>
-                <h2 id="personName" class="person-name" data-bind='text: User().DisplayName'></h2>
+                <h2 id="personName" class="person-name" data-bind='text: Owner2().DisplayName'></h2>
                 <span id="activityDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
             </div>
         </div>
-        
+        <div class="bigImage">
+            <img data-bind="#: ImageUrlFormatted #" />            
+        </div>
+                
+        <static class="paragraph">Participants</static>
+        <a id="addButtonParticipants" data-role="button" data-align="left" data-icon="arrow-e032" data-rel="modalview" href="#addParticipant" class="addButton"></a>
         <div class="content">
             <div class="activity-content">
                 <span id="activityText" data-bind="text: Text" class="user-share-txt"></span>
                 <div class="comments-wrp">
-                    <ul id="comments-listview"></ul>
+                    <ul id="invitations-listview"></ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Comments Template -->
-<script type="text/x-kendo-template" id="commentsTemplate">
+<!-- Invitation Template -->
+<script type="text/x-kendo-template" id="invitationTemplate">
     <div class="user-avatar">
         <img src="#: User().PictureUrl #" alt="#: User().DisplayName #">
     </div>
     <div class="comment-content">
         <h2 class="person-name">#: User().DisplayName #</h2>
-        <a class="user-share-txt">#: Comment #</a>
+        <a class="user-share-txt">#: Accepted #</a>
     </div>
 </script>
+
+<div data-role="modalview" id="addParticipant" data-model="app.addParticipantView" style="width:90%">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>Add participant</span>
+        </div>
+    </div>
+
+    <ul data-role="listview" data-style="inset">
+        <li>
+            <label>
+                Username: <input type="text" data-bind="value: Username"/>              
+            </label>
+        </li>
+        
+    </ul>
+
+    <button data-bind="click: add" class="add-button" data-role="button">Add</button>
+    <button data-bind="click: close" class="close-button" data-role="button">Close</button>
+</div>

@@ -61,6 +61,11 @@ app.Login = (function () {
             var username = $loginUsername.val();
             var password = $loginPassword.val();
             
+            /* hardcoded valus for testing */
+            username = "calin";
+            password = "kfdkfd";
+            /********************************/
+            
             app.mobileApp.showLoading();
 
             // Authenticate using the username and password
@@ -73,6 +78,10 @@ app.Login = (function () {
                 
                 app.mobileApp.hideLoading();
                 return app.Users.load();
+            })
+            .then(function () {
+                
+                return app.MyInvitations.load();
             })
             .then(function () {
 

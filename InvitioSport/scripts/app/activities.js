@@ -26,14 +26,29 @@ app.Activities = (function () {
                     fields: 'Picture',
                     defaultValue: null
                 },
-                UserId: {
-                    field: 'UserId',
+                ImageUrl: {
+                    fields: 'ImageUrl',
                     defaultValue: null
                 },
-                Likes: {
-                    field: 'Likes',
-                    defaultValue: []
-                }
+                Start: {
+                    field: 'Start',
+                    defaultValue: null
+                },
+                End: {
+                    field: 'End',
+                    defaultValue: null
+                },
+                Category: {
+                    field: 'Category',
+                    defaultValue: ''
+                },
+                FriendlyLocation: {
+                    field: 'FriendlyLocation',
+                    defaultValue: ''
+                },
+            },
+            ImageUrlFormatted: function(){
+                return "images/" + this.get("ImageUrl")+ ".png";  
             },
             CreatedAtFormatted: function () {
 
@@ -43,9 +58,30 @@ app.Activities = (function () {
 
                 return app.helper.resolvePictureUrl(this.get('Picture'));
             },
-            User: function () {
+            Accepted: function () {
 
-                var userId = this.get('UserId');
+                var ivtId = this.get('Id');
+                var activityOwnerId = this.get('Owner');
+
+                var currentUser = app.Users.currentUser.data;
+                    
+                if(activityOwnerId === currentUser.Id)
+                    return "responseExists";
+                
+                var data = app.MyInvitations.invitations();
+                var ivt = $.grep(data, function (e) {
+                    return e.Invit === ivtId && e.Participant === currentUser.Username;
+                })[0];
+
+                if (typeof ivt !== 'undefined' && (ivt.Accept === "YES" || ivt.Accept === "NO" || ivt.Accept === "MAYBE"))
+                    return "responseExists";
+                else
+                    return "hidden";
+                
+            },
+            Owner2: function () {
+
+                var userId = this.get('Owner');
 
                 var user = $.grep(app.Users.users(), function (e) {
                     return e.Id === userId;
@@ -59,11 +95,28 @@ app.Activities = (function () {
                     PictureUrl: app.helper.resolveProfilePictureUrl()
                 };
             },
+			Invitations: function() {
+				var invitationsDataForActivity = null;
+				var filter = { 
+	                'Id': this.id
+	            };
+				var data = app.everlive.data('Invitations');
+	            data.get(filter)
+                .then(function(data){
+                   invitationsDataForActivity = new kendo.data.ObservableArray(data.result);
+                },
+                function(error){
+                    app.showError(error.message);
+                });
+            },
             isVisible: function () {
+                return true;
+                /*
                 var currentUserId = app.Users.currentUser.data.Id;
                 var userId = this.get('UserId');
 
                 return currentUserId === userId;
+                */
             }
         };
 
@@ -78,6 +131,9 @@ app.Activities = (function () {
                 // Required by Backend Services
                 typeName: 'Activities'
             },
+            //serverFiltering: true,
+            //works with serverFilersing     filter: { logic: "and", filters: [ { field: "Id", operator: "eq", value: "cddd7a50-c9f6-11e5-9e11-87c941a35a7e" } ] },
+            //not working with serverFiltering     filter: { field: "Id", operator: "eq", value: "cddd7a50-c9f6-11e5-9e11-87c941a35a7e" },
             change: function (e) {
 
                 if (e.items && e.items.length > 0) {
@@ -86,7 +142,7 @@ app.Activities = (function () {
                     $('#no-activities-span').show();
                 }
             },
-            sort: { field: 'CreatedAt', dir: 'desc' }
+            sort: { field: 'Text', dir: 'asc' }
         });
 
         return {
@@ -100,7 +156,6 @@ app.Activities = (function () {
 
         // Navigate to activityView When some activity is selected
         var activitySelected = function (e) {
-
             app.mobileApp.navigate('views/activityView.html?uid=' + e.data.uid);
         };
 
@@ -119,11 +174,18 @@ app.Activities = (function () {
                 navigateHome();
             });
         };
+        
+        var onShow = function() {  
+            var buttongroup = $("#headerButtonGroup").data("kendoMobileButtonGroup");
+            buttongroup.select(0);            
+            activitiesModel.activities.read();
+       }
 
         return {
             activities: activitiesModel.activities,
             activitySelected: activitySelected,
-            logout: logout
+            logout: logout,
+            onShow: onShow
         };
 
     }());

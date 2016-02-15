@@ -5,7 +5,7 @@
 var appSettings = {
 
     everlive: {
-        appId: '$TELERIK_APP_ID$', // Put your Backend Services API key here
+        appId: 'x2hc0b6xihoki3f6', // Put your Backend Services API key here
         scheme: 'http'
     },
 

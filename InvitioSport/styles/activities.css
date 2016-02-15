@@ -1,0 +1,98 @@
+.cf:before,
+.cf:after {
+  content: '';
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+/*#view1 ul li*/
+#mainList li{
+  background-color:#525970;  
+}
+#activities-listview li{
+  background-color:#525970;  
+}
+
+#activities-listview .activity-content{
+  /*
+    position: relative;
+  padding-right: 5em;
+  font-size: .85rem;*/
+    float:left;
+}
+
+#headerButtonGroup .km-state-active{
+    background-color:#1B9AF7 !important;
+    color: #FFFFFF !important;
+}
+
+#headerButtonGroup .km-button{
+    background-color:#C6C6C6;
+    color: #525970;
+}
+
+
+#view1 .km-content{
+  background-color:#525970;  
+}
+
+#view-all-activities .km-content{
+  background-color:#525970;  
+}
+
+.bookImage {
+  float: left;
+}
+
+.bookTitle {
+    
+  font-size: 20px;
+    padding-top:5px;
+    padding-left: 10px;
+  /*padding-top:.4em;
+  padding-left: 4em;
+  padding-right: 2em;*/
+  color: White;
+}
+
+.bookAuthor {
+  font-size: 14px;
+  
+  padding-left: 10px;
+  color: #999999;
+}
+
+.bookImage img {
+  width: 4em;
+}
+
+.responseExists{
+ float: right;
+}
+
+.responseExists img{
+ padding-top:15px;
+}
+
+.hidden{
+    display: none;
+}
+
+/* aci=tivity details */
+
+.paragraph{
+    color: White;
+}
+
+#addButtonParticipants{
+    border-top-color:#525970;
+    border-bottom-color:#525970;
+    border-left-color:#525970;
+    border-right-color:#525970;
+    color:Lime;
+    background-color:#525970;
+}
+

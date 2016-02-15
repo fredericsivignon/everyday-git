@@ -1,0 +1,40 @@
+.km-arrow-e013:after,
+.km-arrow-e013:before
+{
+    content: "\e013";
+}
+
+
+.km-arrow-e0f1:after,
+.km-arrow-e0f1:before
+{
+    content: "\e0f1";
+}
+
+/*back icon*/
+.km-arrow-e322:after,
+.km-arrow-e322:before
+{
+    content: "\e322";
+}
+
+/* add */
+.km-arrow-e039:after,
+.km-arrow-e039:before
+{
+    content: "\e039";
+}
+
+/* search */
+.km-arrow-e21e:after,
+.km-arrow-e21e:before
+{
+    content: "\e21e";
+}
+
+/* add */
+.km-arrow-e032:after,
+.km-arrow-e032:before
+{
+    content: "\e032";
+}

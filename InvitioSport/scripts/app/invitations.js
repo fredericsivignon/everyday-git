@@ -1,24 +1,20 @@
 /**
- * Comments view model
+ * Invitations view model
  */
 
 var app = app || {};
 
-app.Comments = (function () {
+app.Invitations = (function () {
     'use strict'
 
-    var commentsViewModel = (function () {
+    var invitationsViewModel = (function () {
         
-        var commentModel = {
+        var invitationModel = {
             id: 'Id',
             fields: {
-                Comment: {
-                    field: 'Comment',
+                Accept: {
+                    field: 'Accept',
                     defaultValue: ''
-                },
-                CreatedAt: {
-                    field: 'CreatedAt',
-                    defaultValue: new Date()
                 },
                 ActivityId: {
                     field: 'ActivityId',
@@ -47,35 +43,35 @@ app.Comments = (function () {
             }
         };
 
-        var commentsDataSource = new kendo.data.DataSource({
+        var invitationsDataSource = new kendo.data.DataSource({
             type: 'everlive',
             schema: {
-                model: commentModel
+                model: invitationModel
             },
             transport: {
-                typeName: 'Comments'
+                typeName: 'Invitations'
             },
             serverFiltering: true,
             change: function (e) {
 
                 if (e.items && e.items.length > 0) {
-                    $('#comments-listview').kendoMobileListView({
+                    $('#invitations-listview').kendoMobileListView({
                         dataSource: e.items,
-                        template: kendo.template($('#commentsTemplate').html())
+                        template: kendo.template($('#invitationTemplate').html())
                     });
                 } else {
-                    $('#comments-listview').empty();
+                    $('#invitations-listview').empty();
                 }
             },
             sort: { field: 'CreatedAt', dir: 'desc' }
         });
         
         return {
-            comments: commentsDataSource
+            invitations: invitationsDataSource
         };
         
     }());
     
-    return commentsViewModel;
+    return invitationsViewModel;
 
 }());
