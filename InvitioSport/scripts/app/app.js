@@ -11,6 +11,7 @@ var app = (function (win) {
         showAlert(message, 'Error occured');
     };
 
+	/*
     win.addEventListener('error', function (e) {
         e.preventDefault();
 
@@ -19,7 +20,8 @@ var app = (function (win) {
         showAlert(message, 'Error occured');
 
         return true;
-    });
+    });*/
+	
 
     // Global confirm dialog
     var showConfirm = function(message, title, callback) {

@@ -222,6 +222,10 @@ input[type='week'] {
   background-image: url(images/icon-delete.png);
 }
 
+#friendsApp .nav-button-edit {
+  background-image: url(images/icon-edit.png);
+}
+
 #friendsApp .nav-button.km-state-active {
   color: #000;
 }
@@ -538,6 +542,12 @@ input[type='week'] {
   color: #4d4d4d;
   line-height: 1.5;
   word-wrap: break-word;
+}
+
+/* calin */
+#friendsApp .user-share > textarea {
+  color: White;
+  
 }
 
 #friendsApp .activities-view .person-name,

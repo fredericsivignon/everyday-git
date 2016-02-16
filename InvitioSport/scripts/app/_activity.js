@@ -7,8 +7,7 @@ var app = app || {};
 app.Activity = (function () {
     'use strict'
     
-    var $commentsContainer,
-	    $participantsContainer,
+    var $participantsContainer,
         listScroller;
     
     var activityViewModel = (function () {
@@ -18,49 +17,11 @@ app.Activity = (function () {
             $activityPicture;
         
         var init = function () {
-            $commentsContainer = $('#comments-listview');
-			$participantsContainer = $('#participants-listview');
-            $activityPicture = $('#picture');
-        };
-		
-		var initEdit = function () {
             $participantsContainer = $('#participants-listview');
             $activityPicture = $('#picture');
         };
         
         var show = function (e) {
-            
-            $commentsContainer.empty();
-			$participantsContainer.empty();
-            
-            listScroller = e.view.scroller;
-            listScroller.reset();
-            
-            activityUid = e.view.params.uid;
-            // Get current activity (based on item uid) from Activities model
-            activity = app.Activities.activities.getByUid(activityUid);
-            $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
-            
-			app.Participants.participants.filter({
-                field: 'EventId',
-                operator: 'eq',
-                value: activity.Id
-            });
-			
-            app.Comments.comments.filter({
-                field: 'ActivityId',
-                operator: 'eq',
-                value: activity.Id
-            });
-            
-            kendo.bind(e.view.element, activity, kendo.mobile.ui);
-        };
-		
-		var editActivity = function (e) {
-            app.mobileApp.navigate('views/editActivityView.html?uid=' + activityUid);
-        };
-		
-		var edit = function (e) {
             
             $participantsContainer.empty();
             
@@ -72,12 +33,13 @@ app.Activity = (function () {
             activity = app.Activities.activities.getByUid(activityUid);
             $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
             
-			app.Participants.participants.filter({
+			
+            app.Participants.participants.filter({
                 field: 'EventId',
                 operator: 'eq',
                 value: activity.Id
             });
-			            
+            
             kendo.bind(e.view.element, activity, kendo.mobile.ui);
         };
         
@@ -101,14 +63,10 @@ app.Activity = (function () {
                 }
             );
         };
-		
-		        
+        
         return {
             init: init,
-			initEdit: initEdit,
             show: show,
-			edit: edit,
-			editActivity: editActivity,
             remove: removeActivity,
             activity: function () {
                 return activity;

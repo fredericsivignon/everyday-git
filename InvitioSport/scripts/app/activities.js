@@ -70,10 +70,10 @@ app.Activities = (function () {
                 
                 var data = app.MyInvitations.invitations();
                 var ivt = $.grep(data, function (e) {
-                    return e.Invit === ivtId && e.Participant === currentUser.Username;
+                    return e.EventId === ivtId && e.UserId === currentUser.Id;
                 })[0];
 
-                if (typeof ivt !== 'undefined' && (ivt.Accept === "YES" || ivt.Accept === "NO" || ivt.Accept === "MAYBE"))
+                if (typeof ivt !== 'undefined' && (ivt.Accepted === "YES" || ivt.Accepted === "NO" || ivt.Accepted === "MAYBE"))
                     return "responseExists";
                 else
                     return "hidden";
@@ -94,20 +94,6 @@ app.Activities = (function () {
                     DisplayName: 'Anonymous',
                     PictureUrl: app.helper.resolveProfilePictureUrl()
                 };
-            },
-			Invitations: function() {
-				var invitationsDataForActivity = null;
-				var filter = { 
-	                'Id': this.id
-	            };
-				var data = app.everlive.data('Invitations');
-	            data.get(filter)
-                .then(function(data){
-                   invitationsDataForActivity = new kendo.data.ObservableArray(data.result);
-                },
-                function(error){
-                    app.showError(error.message);
-                });
             },
             isVisible: function () {
                 return true;

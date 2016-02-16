@@ -32,9 +32,9 @@ app.MyInvitations = (function () {
             );*/
             var currentUser = app.Users.currentUser.data;
             var filter = { 
-                'User': currentUser.Id
+                'UserId': currentUser.Id
             };
-            var data = app.everlive.data('Invitations');
+            var data = app.everlive.data('Participants');
             data.get(filter)
             .then(function(data){
                invitationsData = new kendo.data.ObservableArray(data.result);

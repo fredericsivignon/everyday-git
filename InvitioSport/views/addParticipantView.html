@@ -1,0 +1,15 @@
+<div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-comment-view"
+    data-init="app.AddParticipant.init" data-show="app.AddParticipant.show" data-model="app.AddParticipant">
+    <div data-role="header">
+        <div data-role="navbar">
+            Invitio
+            <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
+            <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveParticipant">Done</a>
+        </div>
+    </div>
+    <div id="enterUsername" class="share-form-wrp" data-role="listview" data-style="inset">
+        <div class="user-share">
+            <textarea id="newUsername" placeholder="Enter username" required validationMessage="Username is required!"></textarea>
+        </div>
+    </div>
+</div>
