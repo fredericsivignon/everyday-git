@@ -35,16 +35,16 @@ app.AddParticipant = (function () {
                 
                 // Adding new participant to Participants model
                 var participants = app.Participants.participants;
-                var participant = participants.add();
-				
+                var participant = participants.add();				
 				
                 var filter = { "Username": $newUsername.val() };
             	app.everlive.Users.get(filter)
 				.then(function (userRaw) {
                 	var user = userRaw.result[0];
 				
+					var activity = app.Activity.activity();
                 	participant.UserId = user.Id;
-                	participant.EventId = app.Activity.activity().Id;
+                	participant.EventId = activity.Id;
                 
 	                participants.one('sync', function () {
 	                    app.mobileApp.navigate('#:back');
@@ -58,7 +58,19 @@ app.AddParticipant = (function () {
                                 UsersCanDelete: user.Id
                             }
                         };
-                    app.everlive.data('Participants').setAcl(acl, newItem.Id);
+                      
+					
+                    app.everlive.data('Participants').setAcl(acl, participant.Id);
+                    	
+					//add Read permission for participant in Event
+					var aclActivity =   {
+											$push: {
+					                                UsersCanRead: user.Id
+					                               }	
+					                    };					
+					
+					app.everlive.data('Events').setAcl(aclActivity, activity.Id);
+					
 				},
                 function(error){
                     epp.showError(JSON.stringify(error));

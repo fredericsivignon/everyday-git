@@ -20,8 +20,8 @@ var app = (function (win) {
         showAlert(message, 'Error occured');
 
         return true;
-    });*/
-	
+    });
+	*/
 
     // Global confirm dialog
     var showConfirm = function(message, title, callback) {

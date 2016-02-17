@@ -46,6 +46,10 @@ app.Activities = (function () {
                     field: 'FriendlyLocation',
                     defaultValue: ''
                 },
+				Public: {
+					field: 'Public',
+					defaultValue: false
+                }
             },
             ImageUrlFormatted: function(){
                 return "images/" + this.get("ImageUrl")+ ".png";  
@@ -115,7 +119,7 @@ app.Activities = (function () {
             },
             transport: {
                 // Required by Backend Services
-                typeName: 'Activities'
+                typeName: 'Events'
             },
             //serverFiltering: true,
             //works with serverFilersing     filter: { logic: "and", filters: [ { field: "Id", operator: "eq", value: "cddd7a50-c9f6-11e5-9e11-87c941a35a7e" } ] },
@@ -164,7 +168,20 @@ app.Activities = (function () {
         var onShow = function() {  
             var buttongroup = $("#headerButtonGroup").data("kendoMobileButtonGroup");
             buttongroup.select(0);            
-            activitiesModel.activities.read();
+            activitiesModel.activities.read()
+			.then(function(){
+				try{
+			    	//zz.show();
+					console.log(activitiesModel.activities.total());
+				} catch (err) {
+                	console.log('Something went wrong:');
+                	console.log(err);
+            	}
+               var view = activitiesModel.activities.view();
+            },
+            function(error){
+                app.showError(error.message);
+            });
        }
 
         return {
