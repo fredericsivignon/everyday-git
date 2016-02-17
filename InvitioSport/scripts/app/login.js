@@ -81,11 +81,11 @@ app.Login = (function () {
             })
             .then(function () {
                 
-                return app.MyInvitations.load();
+                return app.MyParticipations.load();
             })
             .then(function () {
 
-                app.mobileApp.navigate('views/activitiesView.html');
+                app.mobileApp.navigate('views/eventsView.html');
             })
             .then(null,
                   function (err) {
@@ -130,7 +130,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -177,7 +177,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -224,7 +224,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();
@@ -267,7 +267,7 @@ app.Login = (function () {
                 })
                 .then(function () {
                     app.mobileApp.hideLoading();
-                    app.mobileApp.navigate('views/activitiesView.html');
+                    app.mobileApp.navigate('views/eventsView.html');
                 })
                 .then(null, function (err) {
                     app.mobileApp.hideLoading();

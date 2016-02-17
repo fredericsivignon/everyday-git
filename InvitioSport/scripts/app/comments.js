@@ -20,8 +20,8 @@ app.Comments = (function () {
                     field: 'CreatedAt',
                     defaultValue: new Date()
                 },
-                ActivityId: {
-                    field: 'ActivityId',
+                EventId: {
+                    field: 'EventId',
                     defaultValue: null
                 },
                 UserId: {

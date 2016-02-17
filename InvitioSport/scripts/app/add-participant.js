@@ -1,5 +1,5 @@
 /**
- * AddActivity view model
+ * AddEvent view model
  */
 
 var app = app || {};
@@ -42,34 +42,36 @@ app.AddParticipant = (function () {
 				.then(function (userRaw) {
                 	var user = userRaw.result[0];
 				
-					var activity = app.Activity.activity();
+					var event = app.Event.event();					
+			
                 	participant.UserId = user.Id;
-                	participant.EventId = activity.Id;
+                	participant.EventId = event.Id;
                 
 	                participants.one('sync', function () {
 	                    app.mobileApp.navigate('#:back');
 	                });
 	                
 	                participants.sync();
-					var acl =   {
+					
+					//add Read/Update/Delete permissions in the Participation entity
+					var acl = {
                             $push: {
                                 UsersCanRead: user.Id,
                                 UsersCanUpdate: user.Id,
                                 UsersCanDelete: user.Id
                             }
                         };
-                      
-					
                     app.everlive.data('Participants').setAcl(acl, participant.Id);
                     	
-					//add Read permission for participant in Event
-					var aclActivity =   {
+					//add Read permission for participant in Event entity. 
+					//In this way the participant will be able to read info from Event.
+					var aclEvent =   {
 											$push: {
 					                                UsersCanRead: user.Id
 					                               }	
 					                    };					
 					
-					app.everlive.data('Events').setAcl(aclActivity, activity.Id);
+					app.everlive.data('Events').setAcl(aclEvent, event.Id);
 					
 				},
                 function(error){

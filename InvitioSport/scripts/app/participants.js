@@ -1,5 +1,5 @@
 /**
- * Invitations view model
+ * Participations view model
  */
 
 var app = app || {};

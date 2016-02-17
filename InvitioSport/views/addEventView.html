@@ -1,0 +1,43 @@
+<div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-event-view"
+    data-init="app.AddEvent.init" data-show="app.AddEvent.show" data-model="app.AddEvent">
+    <div data-role="header">
+        <div data-role="navbar">
+            Add event
+            <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
+            <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveEvent">Done</a>
+        </div>
+    </div>
+    <div id="enterStatus" class="share-form-wrp" data-role="listview" data-style="inset">
+        <!--<div class="user-share">
+            <textarea id="newStatus" placeholder="What's on your mind?" required validationMessage="Comment text is required!"></textarea>
+        </div>-->
+    
+        <ul data-role="listview">
+            <li>
+                <label>
+                    Type: <input id="img" type="text" />  <!-- data-bind="value: ImageUrl" -->
+                                                   
+                </label>
+            </li>
+			<li>
+                        <label for="order">Order by:</label>
+                        <select id="order">
+                            <option value="Id">Id</option>
+                            <option value="FirstName">First Name</option>
+                            <option value="LastName">Last Name</option>
+                            <option value="Age">Age</option>
+                        </select>
+                    </li>
+            <li>
+                <label>
+                    Invitation:<input id="eventText" type="text" />  <!-- data-bind="value: invitLabel"  -->
+                </label>
+            </li>
+			<li>
+                <label>
+                    Public:<input id="eventPublic" type="checkbox" />  <!-- data-bind="value: invitLabel"  -->
+                </label>
+            </li>
+        </ul>
+     </div>
+</div>

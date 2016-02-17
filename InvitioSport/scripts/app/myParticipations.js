@@ -1,29 +1,29 @@
 /**
- * Invitations model
+ * Participations model
  */
 
 var app = app || {};
 
-app.MyInvitations = (function () {
+app.MyParticipations = (function () {
     'use strict';
 
-    var invitationsModel = (function () {
+    var participationsModel = (function () {
 
-        var invitationsData;
+        var participationsData;
 
-        // Retrieve invitations for the current user from Backend Services
-        var loadInvitations = function () {
+        // Retrieve participations for the current user from Backend Services
+        var loadParticipations = function () {
 
             // Get the data about the currently logged in user
-            /*var invitationsDataSource = new kendo.data.DataSource({
+            /*var participationsDataSource = new kendo.data.DataSource({
                 type: "everlive",
                 transport: {
                     typeName: "Participants"
                 }
             }); 
-            invitationsDataSource.read()
+            participationsDataSource.read()
             .then(function () {
-                invitationsData = invitationsDataSource;
+                participationsData = participationsDataSource;
             })
             .then(null,
                   function (err) {
@@ -37,7 +37,7 @@ app.MyInvitations = (function () {
             var data = app.everlive.data('Participants');
             data.get(filter)
             .then(function(data){
-               invitationsData = new kendo.data.ObservableArray(data.result);
+               participationsData = new kendo.data.ObservableArray(data.result);
             },
             function(error){
                 app.showError(error.message);
@@ -45,14 +45,14 @@ app.MyInvitations = (function () {
         };
 
         return {
-            load: loadInvitations,
-            invitations: function () {
-                return invitationsData;
+            load: loadParticipations,
+            participations: function () {
+                return participationsData;
             }
         };
 
     }());
 
-    return invitationsModel;
+    return participationsModel;
 
 }());

@@ -1,31 +1,31 @@
 /**
- * Activity view model
+ * Event view model
  */
 
 var app = app || {};
 
-app.Activity = (function () {
+app.Event = (function () {
     'use strict'
     
     var $commentsContainer,
 	    $participantsContainer,
         listScroller;
     
-    var activityViewModel = (function () {
+    var eventViewModel = (function () {
         
-        var activityUid,
-            activity,
-            $activityPicture;
+        var eventUid,
+            event,
+            $eventPicture;
         
         var init = function () {
             $commentsContainer = $('#comments-listview');
 			$participantsContainer = $('#participants-listview');
-            $activityPicture = $('#picture');
+            $eventPicture = $('#picture');
         };
 		
 		var initEdit = function () {
             $participantsContainer = $('#participants-listview');
-            $activityPicture = $('#picture');
+            $eventPicture = $('#picture');
         };
         
         var show = function (e) {
@@ -36,28 +36,28 @@ app.Activity = (function () {
             listScroller = e.view.scroller;
             listScroller.reset();
             
-            activityUid = e.view.params.uid;
-            // Get current activity (based on item uid) from Activities model
-            activity = app.Activities.activities.getByUid(activityUid);
-            $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
+            eventUid = e.view.params.uid;
+            // Get current event (based on item uid) from Events model
+            event = app.Events.events.getByUid(eventUid);
+            $eventPicture[0].style.display = event.Picture ? 'block' : 'none';
             
 			app.Participants.participants.filter({
                 field: 'EventId',
                 operator: 'eq',
-                value: activity.Id
+                value: event.Id
             });
 			
             app.Comments.comments.filter({
-                field: 'ActivityId',
+                field: 'EventId',
                 operator: 'eq',
-                value: activity.Id
+                value: event.Id
             });
             
-            kendo.bind(e.view.element, activity, kendo.mobile.ui);
+            kendo.bind(e.view.element, event, kendo.mobile.ui);
         };
 		
-		var editActivity = function (e) {
-            app.mobileApp.navigate('views/editActivityView.html?uid=' + activityUid);
+		var editEvent = function (e) {
+            app.mobileApp.navigate('views/editEventView.html?uid=' + eventUid);
         };
 		
 		var edit = function (e) {
@@ -67,36 +67,36 @@ app.Activity = (function () {
             listScroller = e.view.scroller;
             listScroller.reset();
             
-            activityUid = e.view.params.uid;
-            // Get current activity (based on item uid) from Activities model
-            activity = app.Activities.activities.getByUid(activityUid);
-            $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
+            eventUid = e.view.params.uid;
+            // Get current event (based on item uid) from Events model
+            event = app.Events.events.getByUid(eventUid);
+            $eventPicture[0].style.display = event.Picture ? 'block' : 'none';
             
 			app.Participants.participants.filter({
                 field: 'EventId',
                 operator: 'eq',
-                value: activity.Id
+                value: event.Id
             });
 			            
-            kendo.bind(e.view.element, activity, kendo.mobile.ui);
+            kendo.bind(e.view.element, event, kendo.mobile.ui);
         };
         
-        var removeActivity = function () {
+        var removeEvent = function () {
             
-            var activities = app.Activities.activities;
-            var activity = activities.getByUid(activityUid);
+            var events = app.Events.events;
+            var event = events.getByUid(eventUid);
             
             app.showConfirm(
-                appSettings.messages.removeActivityConfirm,
-                'Delete Activity',
+                appSettings.messages.removeEventConfirm,
+                'Delete Event',
                 function (confirmed) {
                     if (confirmed === true || confirmed === 1) {
                         
-                        activities.remove(activity);
-                        activities.one('sync', function () {
+                        events.remove(event);
+                        events.one('sync', function () {
                             app.mobileApp.navigate('#:back');
                         });
-                        activities.sync();
+                        events.sync();
                     }
                 }
             );
@@ -108,15 +108,15 @@ app.Activity = (function () {
 			initEdit: initEdit,
             show: show,
 			edit: edit,
-			editActivity: editActivity,
-            remove: removeActivity,
-            activity: function () {
-                return activity;
+			editEvent: editEvent,
+            remove: removeEvent,
+            event: function () {
+                return event;
             }
         };
         
     }());
     
-    return activityViewModel;
+    return eventViewModel;
     
 }());

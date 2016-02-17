@@ -17,8 +17,8 @@
   margin: 1em 2em;
 }
 
-#friendsApp .activities-view .km-listview,
-#friendsApp .add-activity-view .km-listview,
+#friendsApp .events-view .km-listview,
+#friendsApp .add-event-view .km-listview,
 #friendsApp .add-comment-view .km-listview {
   /*margin: 1em;*/
 }
@@ -230,8 +230,8 @@ input[type='week'] {
   color: #000;
 }
 
-#friendsApp .activity-view .user-status-wrp .km-navbar .nav-button,
-#friendsApp .activity-view .user-status-wrp .km-navbar .nav-button.km-state-active {
+#friendsApp .event-view .user-status-wrp .km-navbar .nav-button,
+#friendsApp .event-view .user-status-wrp .km-navbar .nav-button.km-state-active {
   color: #fff;
 }
 
@@ -386,9 +386,9 @@ input[type='week'] {
   color: #b6c5c6;
 }
 
-/* Activities */
+/* Events */
 
-#friendsApp .activity-view .user-status-wrp .km-navbar {
+#friendsApp .event-view .user-status-wrp .km-navbar {
   position: absolute;
   top: 0;
   left: 0;
@@ -397,20 +397,20 @@ input[type='week'] {
   background-color: transparent;
 }
 
-#friendsApp .activity-view .user-status-wrp .content {
+#friendsApp .event-view .user-status-wrp .content {
   padding: 1em;
 }
 
-#friendsApp .activity-view .activity-content {
+#friendsApp .event-view .event-content {
   padding: 0;
 }
 
-#friendsApp .activity-view .activity-content > span {
+#friendsApp .event-view .event-content > span {
   padding: 1em 0;
   color: white;
 }
 
-#friendsApp .activity-view .user-info {
+#friendsApp .event-view .user-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -419,18 +419,18 @@ input[type='week'] {
   padding: 0 1em .5em;
 }
 
-#friendsApp .activity-view .user-info .person-name,
-#friendsApp .activity-view .user-info .time-span {
+#friendsApp .event-view .user-info .person-name,
+#friendsApp .event-view .user-info .time-span {
   color: #fff;
 }
 
-#friendsApp .activity-view .user-info .person-name {
+#friendsApp .event-view .user-info .person-name {
   display: inline-block;
   float: left;
   margin: 1em;
 }
 
-#friendsApp .activity-view .user-info .time-span {
+#friendsApp .event-view .user-info .time-span {
   display: inline-block;
   float: right;
   min-width: 80px;
@@ -440,8 +440,8 @@ input[type='week'] {
   text-transform: uppercase;
 }
 
-#friendsApp .activities-view .km-list > li,
-#friendsApp .activity-view .km-list > li {
+#friendsApp .events-view .km-list > li,
+#friendsApp .event-view .km-list > li {
   /*padding: .75em 0 1em;*/
   border-width: 0;
   color: #4d4d4d;
@@ -450,14 +450,14 @@ input[type='week'] {
   overflow: visible;
 }
 
-#friendsApp .activities-view .km-list > li {
+#friendsApp .events-view .km-list > li {
   position: relative;
   border-width: 0;
 }
 
 /* this is the thin white line above every "li" element*/
-#friendsApp .activities-view .km-list > li::before,
-#friendsApp .activity-view .km-list > li::before {
+#friendsApp .events-view .km-list > li::before,
+#friendsApp .event-view .km-list > li::before {
   content: '';
   /*position: absolute;
   top: 0;
@@ -468,19 +468,19 @@ input[type='week'] {
   border-bottom: 1px solid #eaeced;
 }
 
-#friendsApp .activities-view .km-list > li:first-child::before {
+#friendsApp .events-view .km-list > li:first-child::before {
   display: none;
 }
 
-#friendsApp .activity-view .km-list > li::before {
+#friendsApp .event-view .km-list > li::before {
   left: 5em;
 }
 
-#friendsApp .activity-view .comments-wrp {
+#friendsApp .event-view .comments-wrp {
   margin-top: 1em;
 }
 
-#friendsApp .activities-view .km-list > li:first-child {
+#friendsApp .events-view .km-list > li:first-child {
   padding-top: 0;
 }
 
@@ -495,19 +495,19 @@ input[type='week'] {
   border-radius: 25px;
 }
 
-#friendsApp .activity-content,
+#friendsApp .event-content,
 #friendsApp .comment-content {
   position: relative;
   /*padding-left: 5em;*/
   font-size: .85rem;
 }
 
-#friendsApp .activity-content .picture {
+#friendsApp .event-content .picture {
   margin: 0 0 1em;
 }
 
 #friendsApp .person-name,
-#friendsApp .activity-content .time-span {
+#friendsApp .event-content .time-span {
   font-weight: 600;
 }
 
@@ -524,14 +524,14 @@ input[type='week'] {
   white-space: nowrap;
 }
 
-#friendsApp .activity-content .time-span {
+#friendsApp .event-content .time-span {
   display: block;
   color: #a6a6a6;
   font-size: .7rem;
   text-transform: uppercase;
 }
 
-#friendsApp .activity-content .comment-content .time-span {
+#friendsApp .event-content .comment-content .time-span {
   top: 12px;
   font-size: .6rem;
 }
@@ -550,19 +550,19 @@ input[type='week'] {
   
 }
 
-#friendsApp .activities-view .person-name,
-#friendsApp .activity-view .person-name,
-#friendsApp .add-activity-view .person-name,
+#friendsApp .events-view .person-name,
+#friendsApp .event-view .person-name,
+#friendsApp .add-event-view .person-name,
 #friendsApp .add-comment-view .person-name {
   margin: .85em 0 1em;
 }
 
-#friendsApp .add-activity-view .person-name,
+#friendsApp .add-event-view .person-name,
 #friendsApp .add-comment-view .person-name {
   padding-left: .75em;
 }
 
-#friendsApp .activity-view .picture-wrp {
+#friendsApp .event-view .picture-wrp {
   position: relative;
   height: 258px;
   margin: 0 auto;
@@ -572,7 +572,7 @@ input[type='week'] {
   overflow: hidden;
 }
 
-#friendsApp .activity-view .picture-wrp::before {
+#friendsApp .event-view .picture-wrp::before {
   content: '';
   position: absolute;
   top: 0;
@@ -586,7 +586,7 @@ input[type='week'] {
   background: transparent url(images/background-picture.png) repeat-x 0 0;
 }
 
-#friendsApp .activity-view .picture {
+#friendsApp .event-view .picture {
   position: relative;
   top: 50%;
   left: 50%;
@@ -596,14 +596,14 @@ input[type='week'] {
           transform: translate(-50%, -50%);
 }
 
-#friendsApp .add-activity-view .km-leftitem,
+#friendsApp .add-event-view .km-leftitem,
 #friendsApp .add-comment-view .km-leftitem {
   left: 1em;
 }
 
-#friendsApp .add-activity-view .km-rightitem,
+#friendsApp .add-event-view .km-rightitem,
 #friendsApp .add-comment-view .km-rightitem,
-#friendsApp .activity-view .km-rightitem {
+#friendsApp .event-view .km-rightitem {
   right: 1em;
 }
 
@@ -625,9 +625,9 @@ input[type='week'] {
   color: #e84c3d;
 }
 
-#friendsApp.km-flat.km-on-wp .activities-view,
-#friendsApp.km-flat.km-on-wp .activity-view,
-#friendsApp.km-flat.km-on-wp .add-activity-view,
+#friendsApp.km-flat.km-on-wp .events-view,
+#friendsApp.km-flat.km-on-wp .event-view,
+#friendsApp.km-flat.km-on-wp .add-event-view,
 #friendsApp.km-flat.km-on-wp .add-comment-view {
     margin-top: 30px;
 }

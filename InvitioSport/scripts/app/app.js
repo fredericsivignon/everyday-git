@@ -102,7 +102,7 @@ var app = (function (win) {
             }
         },
 
-        // Return current activity picture url
+        // Return current event picture url
         resolvePictureUrl: function (id) {
             if (id && id !== emptyGuid) {
                 return el.Files.getDownloadUrl(id);

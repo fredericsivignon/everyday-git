@@ -12100,7 +12100,7 @@ ExecutionTree.prototype.getExecutionNodeOfRelation = function (relation) {
 
 /**
  * Finds a RelationNode within the RelationTree.
- * @param relation - String that represents the relation within the RelationTree (for example: Activities.Likes.Role).
+ * @param relation - String that represents the relation within the RelationTree (for example: Events.Likes.Role).
  * @returns {*}
  */
 ExecutionTree.prototype.getRelationNode = function (relation) {
@@ -12237,27 +12237,27 @@ ExecutionTree.prototype.getFilterFromSingleRelation = function (relation, includ
 ExecutionTree.prototype.getRelationFieldValues = function (relation, includeArrays) {
     var parentRelationIds = [];
     var parentRelation = this._relationTree[relation.parent];
-    // parentRelationResult actually is an Activity or Array of Activities
+    // parentRelationResult actually is an Event or Array of Events
     var parentRelationResult = Array.isArray(parentRelation.result) ? parentRelation.result : [parentRelation.result];
     if (relation.isInvertedRelation) {
         for (var p = 0; p < parentRelationResult.length; p++) {
             parentRelationIds.push(parentRelationResult[p][relation.parentRelationField]);
         }
     } else {
-        // all comments are related to expand of type content type Activities expand: {"Likes": true}
+        // all comments are related to expand of type content type Events expand: {"Likes": true}
         if (parentRelation && parentRelation.result) {
             relation.parentRelationIds = relation.parentRelationIds || {};
             for (var i = 0; i < parentRelationResult.length; i++) {
-                // itemFromParentRelation is single Activity
+                // itemFromParentRelation is single Event
                 var itemFromParentRelation = parentRelationResult[i];
 
-                // parentRelationFieldValue is Activity.Likes
+                // parentRelationFieldValue is Event.Likes
                 var parentRelationFieldValue = itemFromParentRelation[relation.relationField];
                 if (Array.isArray(parentRelationFieldValue)) {
                     relation.hasArrayValues = true;
                     if (includeArrays) {
                         for (var j = 0; j < parentRelationFieldValue.length; j++) {
-                            // itemToExpandId is current value in Activity.Likes array or just a single "Id"
+                            // itemToExpandId is current value in Event.Likes array or just a single "Id"
                             var itemToExpandId = parentRelationFieldValue[j];
                             if(itemToExpandId !== undefined && itemToExpandId !== null) {
                                 parentRelationIds.push(itemToExpandId);
@@ -12759,7 +12759,7 @@ RelationTreeBuilder.prototype.build = function (done) {
 
 /**
  *
- * @param relationName - A path to the external relation collection (Comments.ActivityId)
+ * @param relationName - A path to the external relation collection (Comments.EventId)
  * @param expandExpression - The expand expression that contains all information about the relation
  * @param rootName - Name of the parent relation.
  * @returns {RelationNode}
@@ -12782,7 +12782,7 @@ RelationTreeBuilder.prototype.createInvertedRelation = function (relationName, e
 /**
  * An internal method which parses the expand expression and produces a basic relation tree (only names and parent relations).
  * @param expandExpression - The expand expression which will be processed.
- * @param rootName - The name of the root relation (master query) usually the name of the requested content type (Activities).
+ * @param rootName - The name of the root relation (master query) usually the name of the requested content type (Events).
  */
 RelationTreeBuilder.prototype.buildMapInternal = function (expandExpression, rootName) {
     for (var relationName in expandExpression) {

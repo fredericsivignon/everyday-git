@@ -1,5 +1,5 @@
 /**
- * AddActivity view model
+ * AddEvent view model
  */
 
 var app = app || {};
@@ -39,7 +39,7 @@ app.AddComment = (function () {
                 
                 comment.Comment = $newComment.val();
                 comment.UserId = app.Users.currentUser.get('data').Id;
-                comment.ActivityId = app.Activity.activity().Id;
+                comment.EventId = app.Event.event().Id;
                 
                 comments.one('sync', function () {
                     app.mobileApp.navigate('#:back');

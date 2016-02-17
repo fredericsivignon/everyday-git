@@ -1,24 +1,24 @@
 /**
- * Activity view model
+ * Event view model
  */
 
 var app = app || {};
 
-app.EditActivity = (function () {
+app.EditEvent = (function () {
     'use strict'
     
     var $participantsContainer,
         listScroller;
     
-    var activityViewModel = (function () {
+    var eventViewModel = (function () {
         
-        var activityUid,
-            activity,
-            $activityPicture;
+        var eventUid,
+            event,
+            $eventPicture;
         
         var init = function () {
             $participantsContainer = $('#participants-listview');
-            $activityPicture = $('#picture');
+            $eventPicture = $('#picture');
         };
 		
 		        
@@ -29,31 +29,31 @@ app.EditActivity = (function () {
             listScroller = e.view.scroller;
             listScroller.reset();
             
-            activityUid = e.view.params.uid;
-            // Get current activity (based on item uid) from Activities model
-            activity = app.Activities.activities.getByUid(activityUid);
-            $activityPicture[0].style.display = activity.Picture ? 'block' : 'none';
+            eventUid = e.view.params.uid;
+            // Get current event (based on item uid) from Events model
+            event = app.Events.events.getByUid(eventUid);
+            $eventPicture[0].style.display = event.Picture ? 'block' : 'none';
             
 			app.Participants.participants.filter({
                 field: 'EventId',
                 operator: 'eq',
-                value: activity.Id
+                value: event.Id
             });
 			
                        
-            kendo.bind(e.view.element, activity, kendo.mobile.ui);
+            kendo.bind(e.view.element, event, kendo.mobile.ui);
         };	
 		        
         return {
             init: init,
 			show: show,
-			activity: function () {
-                return activity;
+			event: function () {
+                return event;
             }
         };
         
     }());
     
-    return activityViewModel;
+    return eventViewModel;
     
 }());

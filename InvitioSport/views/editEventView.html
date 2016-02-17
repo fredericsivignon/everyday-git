@@ -1,4 +1,4 @@
-<div data-role="view" id="single-editActivity" data-layout="default" class="activity-view" data-init="app.EditActivity.init" data-show="app.EditActivity.show">
+<div data-role="view" id="single-editEvent" data-layout="default" class="event-view" data-init="app.EditEvent.init" data-show="app.EditEvent.show">
     <div data-role="header"></div>
 
     <div id="status-container" class="user-status-wrp cf">
@@ -13,13 +13,13 @@
                     <img data-bind="attr:{src: Owner2().PictureUrl}" alt="#: Owner2().DisplayName #">
                 </div>
                 <h2 id="personName" class="person-name" data-bind='text: Owner2().DisplayName'></h2>
-                <span id="activityDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
+                <span id="eventDate" class="time-span" data-bind="text: CreatedAtFormatted"></span>
             </div>
         </div>
 		
         <div class="content">
-            <div class="activity-content">
-                <span id="activityText" data-bind="text: Text" class="user-share-txt"></span>
+            <div class="event-content">
+                <span id="eventText" data-bind="text: Text" class="user-share-txt"></span>
 				<div class="bigImage">
 		            <img data-bind="attr:{src: ImageUrlFormatted()}" />            
 		        </div>

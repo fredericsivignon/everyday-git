@@ -12,11 +12,11 @@
 #mainList li{
   background-color:#525970;  
 }
-#activities-listview li{
+#events-listview li{
   background-color:#525970;  
 }
 
-#activities-listview .activity-content{
+#events-listview .event-content{
   /*
     position: relative;
   padding-right: 5em;
@@ -39,7 +39,7 @@
   background-color:#525970;  
 }
 
-#view-all-activities .km-content{
+#view-all-events .km-content{
   background-color:#525970;  
 }
 
