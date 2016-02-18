@@ -16,7 +16,7 @@ app.AddEvent = (function () {
         var validator;
         
         var init = function () {
-            $("#order").kendoDropDownList();
+            //$("#order").kendoDropDownList();
 			
             validator = $('#enterStatus').kendoValidator().data('kendoValidator');
             //$newStatus = $('#newStatus');

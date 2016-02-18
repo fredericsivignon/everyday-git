@@ -163,7 +163,8 @@ app.Events = (function () {
 			eventsModel.events.read()
 			.then(function() {		
 				
-				agendaDataSource.data = new kendo.data.ObservableArray([]);
+				var newDS = new kendo.data.ObservableArray([]);
+				agendaDataSource.data(newDS);
 				var data = eventsModel.events.data(); // you can use also :  this.view();
 				for (var i = 0; i < data.length; i++) {
 					//search if in participants
@@ -171,10 +172,11 @@ app.Events = (function () {
 							return e.EventId === data[i].Id;
 						})[0];
 					if(part != null)
-						agendaDataSource.data.push(data[i]);
+						newDS.push(data[i]);
 				}
 				agendaDataSource.read();
-				$("#events-listview").data("kendoMobileListView").refresh()
+				//agendaDataSource.sync();
+				$("#events-listview").data("kendoMobileListView").refresh();
 			});
 		
 

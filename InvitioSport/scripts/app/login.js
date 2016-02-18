@@ -62,7 +62,7 @@ app.Login = (function () {
             var password = $loginPassword.val();
             
             /* hardcoded valus for testing */
-            username = "calin";
+            username = "andy";
             password = "kfdkfd";
             /********************************/
             
